@@ -17,7 +17,7 @@ function Navbar() {
   const NavLinks = () => (
     <>
       <Link to="/" onClick={() => setSidebarOpen(false)}>Home</Link>
-      <Link to="/create" onClick={() => setSidebarOpen(false)}>Create Blog</Link>
+      <Link to="/CreateBlogs" onClick={() => setSidebarOpen(false)}>Create Blog</Link>
       <Link to="/signup" onClick={() => setSidebarOpen(false)}>Account</Link>
     </>
   );
