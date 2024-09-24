@@ -15,6 +15,9 @@ export default function CreateBlog(){
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
     const [cover, setCover] = useState(null);
+    const [successMessage, setSuccessMessage] = useState('');
+
+
 
     const handleCoverImgChange = (e) => {
         if (e.target.files[0]) {
@@ -58,7 +61,10 @@ export default function CreateBlog(){
             coverImg: imageUrl,
             author: user.uid
         }).then((docRef) => {
-            alert('Blog post added successfully');
+            setSuccessMessage('Blog post added successfully');
+            setTitle('');
+            setBody('');
+            setCover(null);
         }).catch((error) => {
             console.error('Error adding document: ', error);
             alert('Failed to add blog post: ' + error.message);
@@ -105,6 +111,8 @@ export default function CreateBlog(){
     
     return(
         <div className="create-blog-container">
+            <button onClick={() => navigate('/')} className="back-button">Back to Home</button>
+            {successMessage && <div className="success-message">{successMessage}</div>}
             <form onSubmit={(event) => {submit(event)}} className="create-blog-form">
                 <input 
                     type="text" 
@@ -139,9 +147,9 @@ export default function CreateBlog(){
                             'codesample',
                         ],
                         toolbar: 'undo redo | formatselect | ' +
-                                 'bold italic backcolor | alignleft aligncenter ' +
-                                 'alignright alignjustify | bullist numlist outdent indent | ' +
-                                 'image media | codesample | removeformat | help',
+                         'bold italic backcolor | alignleft aligncenter ' +
+                         'alignright alignjustify | bullist numlist outdent indent | ' +
+                         'image media | codesample | removeformat | help',
                         images_upload_handler:handleImageUpload,
                         automatic_uploads: true,
                         file_picker_callback:file_picker_callback,
@@ -154,7 +162,5 @@ export default function CreateBlog(){
                 <button type="submit" className="create-blog-submit">Submit</button>
             </form>
         </div>
-    )}
 
-
-
+                )}

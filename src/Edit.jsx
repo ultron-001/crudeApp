@@ -110,6 +110,7 @@ export default function BlogEdit() {
 
     return (
         <div className="edit-blog-container">
+            <button onClick={() => navigate('/')} className="back-button">Back</button>
             <form onSubmit={submit} className="edit-blog-form">
                 <input 
                     type="text" 
