@@ -18,7 +18,7 @@ function Navbar() {
     <>
       <Link to="/" onClick={() => setSidebarOpen(false)}>Home</Link>
       <Link to="/create" onClick={() => setSidebarOpen(false)}>Create Blog</Link>
-      <Link to="/signup" onClick={() => setSidebarOpen(false)}>Sign Up</Link>
+      <Link to="/signup" onClick={() => setSidebarOpen(false)}>Account</Link>
     </>
   );
 
