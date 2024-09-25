@@ -74,7 +74,7 @@ body {
   background-color: #343536;
 }
 
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
   .navbar {
     flex-direction: column;
     padding: 10px;
@@ -86,7 +86,7 @@ body {
     justify-content: center;
     margin-bottom: 10px;
   }
-}
+} */
 
 .blogs-list-container {
   width: 100%;
@@ -95,11 +95,7 @@ body {
   box-sizing: border-box;
 }
 
-.search-form {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
+
 
 .search-input {
   width: 70%;

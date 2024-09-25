@@ -25,24 +25,24 @@ function Navbar() {
   return (
     <>
       <nav className="navbar">
-        <div className="navbar-left">
-          <Link to="/" className="nav-logo">blogit</Link>
-        </div>
-        <div className="navbar-right">
-          {!isSmallScreen && <NavLinks />}
-          {isSmallScreen && (
-            <button className="menu-toggle" onClick={() => setSidebarOpen(!sidebarOpen)}>
-              ☰
-            </button>
-          )}
-        </div>
+          <div className="navbar-left">
+            <Link to="/" className="nav-logo">blogit</Link>
+          </div>
+          <div className="navbar-right">
+            {!isSmallScreen && <NavLinks />}
+            {isSmallScreen && (
+              <button className="menu-toggle" onClick={() => setSidebarOpen(!sidebarOpen)}>
+                ☰
+              </button>
+            )}
+          </div>
       </nav>
-      {isSmallScreen && (
-        <div className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
-          <button className="close-sidebar" onClick={() => setSidebarOpen(false)}>×</button>
-          <NavLinks />
-        </div>
-      )}
+        {isSmallScreen && (
+            <div className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
+              <button className="close-sidebar" onClick={() => setSidebarOpen(false)}>×</button>
+              <NavLinks />
+          </div>
+        )}
     </>
   );
 }
