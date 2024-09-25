@@ -9,6 +9,7 @@ const storageRef = fb.storage().ref();
 
 
 
+
 export default function CreateBlog(){
     const navigate = useNavigate();
     const {user, initializing} = useAuthState(fb.auth());
@@ -16,6 +17,7 @@ export default function CreateBlog(){
     const [body, setBody] = useState('');
     const [cover, setCover] = useState(null);
     const [successMessage, setSuccessMessage] = useState('');
+    
 
 
 
@@ -112,7 +114,17 @@ export default function CreateBlog(){
     return(
         <div className="create-blog-container">
             <button onClick={() => navigate('/')} className="back-button">Back to Home</button>
-            {successMessage && <div className="success-message">{successMessage}</div>}
+                      {successMessage && (
+                        <div className="popup-card">
+                          <div className="popup-content">
+                            <p>{successMessage}</p>
+                            <button onClick={() => {
+                              setSuccessMessage('')
+                              navigate('/')
+                            }}>Close</button>
+                          </div>
+                        </div>
+                      )}
             <form onSubmit={(event) => {submit(event)}} className="create-blog-form">
                 <input 
                     type="text" 
