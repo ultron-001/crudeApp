@@ -226,6 +226,7 @@ export default function BlogView() {
 
     return (
         <div className="blog-view-container">
+            <div className="blog-view-content">
             <h1 className="blog-title">{blog.Title || blog.title}</h1>
             <div className="blog-content" dangerouslySetInnerHTML={{ __html: blog.Body || blog.body }}></div>
 
@@ -258,6 +259,7 @@ export default function BlogView() {
                     {renderComments(commentList)}
                 </div>
             </div>
+        </div>
         </div>
     );
 }

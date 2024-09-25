@@ -6,7 +6,7 @@
 }
 
 main{
-  flex-grow: 1;
+  flex: 1 0 auto;
 }
 
 body {
@@ -37,7 +37,7 @@ body {
 }
 
 .navbar-right a {
-  color: white;
+  color: #1A1A1B;
   text-decoration: none;
   margin-left: 20px;
 }
@@ -54,9 +54,12 @@ body {
   margin-right: 20px;
 }
 
+.nav-logo a{
+  color: var(--greencolor);
+}
+
 .navbar-left a, 
 .navbar-right a {
-  color: #1A1A1B;
   text-decoration: none;
   margin-right: 10px;
 }
@@ -74,6 +77,10 @@ body {
   padding: 0 20px;
 }
 
+.blog-view-content{
+  flex: 1;
+}
+
 .search-form {
   display: flex;
   justify-content: center;
@@ -81,7 +88,6 @@ body {
   padding: 10px;
   border-radius: 4px;
   margin: 70px auto 30px ;
-  /* margin-bottom: 30px; */
   max-width: 500px;
   width: 100%;
   
@@ -196,6 +202,18 @@ body {
   margin-bottom: 30px;
 }
 
+.like-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.like-section p{
+  font-size: 16px;
+  color: var(--thirdcolor);
+}
+
 /* Comment Section */
 .comment-section {
   border-top: 2px solid var(--maincolor);
@@ -293,9 +311,6 @@ body {
 .footer {
   background-color: var(--secondcolor);
   color: white;
-  /* position: fixed;
-  bottom: 0;
-  left: 0; */
   width: 100vw;
   text-align: center;
   padding: 20px 0;
@@ -330,7 +345,7 @@ body {
     display: block;
     background: none;
     border: none;
-    color: white;
+    color: var(--greencolor);
     font-size: 24px;
     cursor: pointer;
   }
