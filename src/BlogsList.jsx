@@ -9,6 +9,7 @@ const BlogsList = DB.collection('blogs');
 export default function BlogsListView() {
   const [blogs, setBlogs] = useState([]);
   const [search, setSearch] = useState('');
+  const [deleteConfirmation, setDeleteConfirmation] = useState(null);
   const { user } = useAuthState(fb.auth()); // Get the current user
 
   useEffect(() => {
@@ -24,9 +25,24 @@ export default function BlogsListView() {
     return () => unsubscribe();
   }, []);
 
+  
+
+  // const DeleteBlog = (id) => {
+  //   BlogsList.doc(id).delete().then(() => {
+  //     alert('Data Deleted');
+  //   }).catch((error) => {
+  //     console.error('Error deleting document: ', error);
+  //     alert('Failed to delete data: ' + error.message);
+  //   });
+  // };
+
   const DeleteBlog = (id) => {
-    BlogsList.doc(id).delete().then(() => {
-      alert('Data Deleted');
+    setDeleteConfirmation(id);
+  };
+
+  const confirmDelete = () => {
+    BlogsList.doc(deleteConfirmation).delete().then(() => {
+      setDeleteConfirmation(null);
     }).catch((error) => {
       console.error('Error deleting document: ', error);
       alert('Failed to delete data: ' + error.message);
@@ -54,6 +70,15 @@ export default function BlogsListView() {
     return (
       <div className="blogs-list-container">
         <form className="search-form" onSubmit={(e)=>{SearchBlog(e)}} >
+        {deleteConfirmation && (
+            <div className="popup-card">
+              <div className="popup-content">
+                <p>Are you sure you want to delete this blog?</p>
+                <button className='popup-button confirm-delete' onClick={confirmDelete}>Yes, Delete</button>
+                <button className='popup-button' onClick={() => setDeleteConfirmation(null)}>Cancel</button>
+              </div>
+            </div>
+          )} 
           <input className="search-input" onChange={(e) => {setSearch(e.target.value)}} />
           <button className="search-button" type='submit'>Search</button>
         </form>
@@ -81,5 +106,9 @@ export default function BlogsListView() {
               )}
             </div>
           ))}      </div>
-      );
-  }
+
+                 
+
+        );
+  
+}
