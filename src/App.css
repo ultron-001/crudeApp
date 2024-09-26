@@ -455,6 +455,15 @@ body {
   background-color: var(--thirdcolor);
 }
 
+.create-blog-cover-upload{
+  color: var(--secondcolor);
+  margin-bottom: 10px;
+}
+
+.upload-text{
+  color: var(--secondcolor);
+}
+
 .auth-container{
   display: flex;
     justify-content: center;

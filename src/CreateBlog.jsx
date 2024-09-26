@@ -171,7 +171,7 @@ export default function CreateBlog() {
                     className="create-blog-editor"
                 />
 
-                {loading && <p>Uploading... Please wait.</p>}
+                {loading && <p className='upload-text'>Uploading... Please wait.</p>}
 
                 <button type="submit" className="create-blog-submit">Submit</button>
             </form>
