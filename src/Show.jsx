@@ -43,6 +43,7 @@ export default function BlogView() {
     const [commentList, setCommentList] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchBlog = async () => {
@@ -226,6 +227,7 @@ export default function BlogView() {
 
     return (
         <div className="blog-view-container">
+            <button onClick={() => navigate('/')} className="back-button show-back">Back to Home</button>
             <div className="blog-view-content">
             <h1 className="blog-title">{blog.Title || blog.title}</h1>
             <div className="blog-content" dangerouslySetInnerHTML={{ __html: blog.Body || blog.body }}></div>

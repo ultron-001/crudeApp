@@ -15,6 +15,8 @@ export default function BlogEdit() {
     const [cover, setCover] = useState(null);
     const [coverUrl, setCoverUrl] = useState('');
     const [loading, setLoading] = useState(true);
+    const [successMessage, setSuccessMessage] = useState('');
+
 
     useEffect(() => {
         BlogsList.doc(id).get().then((snapshot) => {
@@ -62,11 +64,12 @@ export default function BlogEdit() {
             body: body,
             coverImg: imageUrl
         }).then(() => {
-            alert('Blog post updated successfully');
-            navigate('/');
+            setSuccessMessage('Blog post updated successfully!');
+            setLoading(false);
         }).catch((error) => {
             console.error('Error updating document: ', error);
             alert('Failed to update blog post: ' + error.message);
+            setLoading(false);
         });
     };
 
@@ -111,6 +114,17 @@ export default function BlogEdit() {
     return (
         <div className="edit-blog-container">
             <button onClick={() => navigate('/')} className="back-button">Back</button>
+            {successMessage && (
+                <div className="popup-card">
+                    <div className="popup-content">
+                        <p>{successMessage}</p>
+                        <button onClick={() => {
+                            setSuccessMessage('');
+                            navigate('/');
+                        }}>Close</button>
+                    </div>
+                </div>
+            )}
             <form onSubmit={submit} className="edit-blog-form">
                 <input 
                     type="text" 
